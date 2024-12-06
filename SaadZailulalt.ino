@@ -15,8 +15,8 @@
 #define ECHO_PIN 4
 // Togmol Utguud
 const int MOTOR_HURD = 255;
-const int ERGUULEH_HUGATSAA = 200;
-const int SAAD_ZAI = 25;
+const int ERGUULEH_HUGATSAA = 550;
+const int SAAD_ZAI = 15;
 const int DEED_ZAI = 200;
 
 NewPing zaiMedrugch(TRIGGER_PIN, ECHO_PIN, DEED_ZAI);
@@ -33,7 +33,7 @@ void setup() {
   
   // Servo tohirgoo
   servoMotor.attach(SERVO_PIN);
-  servoMotor.write(65);  // Goliin bairshil (zasagdsan)
+  servoMotor.write(90);  // Goliin bairshil 
   
   Serial.begin(9600);
   delay(2000);
@@ -64,18 +64,7 @@ void HoishYavah() {
 }
 
 void BaruunTiishErgeh() {
-  // Baruun motor uragsh
-  analogWrite(BARUUN_MOTOR_HURD, MOTOR_HURD);
-  digitalWrite(BARUUN_MOTOR_CHIG1, LOW);
-  digitalWrite(BARUUN_MOTOR_CHIG2, HIGH);
   
-  // Zuun motor hoish
-  analogWrite(ZUUN_MOTOR_HURD, MOTOR_HURD);
-  digitalWrite(ZUUN_MOTOR_CHIG1, LOW);
-  digitalWrite(ZUUN_MOTOR_CHIG2, HIGH);
-}
-
-void ZuunTiishErgeh() {
   // Baruun motor hoish
   analogWrite(BARUUN_MOTOR_HURD, MOTOR_HURD);
   digitalWrite(BARUUN_MOTOR_CHIG1, HIGH);
@@ -85,6 +74,18 @@ void ZuunTiishErgeh() {
   analogWrite(ZUUN_MOTOR_HURD, MOTOR_HURD);
   digitalWrite(ZUUN_MOTOR_CHIG1, HIGH);
   digitalWrite(ZUUN_MOTOR_CHIG2, LOW);
+}
+
+void ZuunTiishErgeh() {
+  // Baruun motor uragsh
+  analogWrite(BARUUN_MOTOR_HURD, MOTOR_HURD);
+  digitalWrite(BARUUN_MOTOR_CHIG1, LOW);
+  digitalWrite(BARUUN_MOTOR_CHIG2, HIGH);
+  
+  // Zuun motor hoish
+  analogWrite(ZUUN_MOTOR_HURD, MOTOR_HURD);
+  digitalWrite(ZUUN_MOTOR_CHIG1, LOW);
+  digitalWrite(ZUUN_MOTOR_CHIG2, HIGH);
 }
 
 void MotorZogsooh() {
@@ -97,20 +98,20 @@ void MotorZogsooh() {
 }
 
 int BaruunTiishHarah() {
-  servoMotor.write(-20);  // Baruun tish harah
+  servoMotor.write(0);  // Baruun tish harah
   delay(500);
   int zai = zaiMedrugch.ping_cm();
   delay(100);
-  servoMotor.write(65);  // Butsaad gol bairshild
+  servoMotor.write(90);  // Butsaad gol bairshild
   return zai;
 }
 
 int ZuunTiishHarah() {
-  servoMotor.write(170);  // Zuun tish harah
+  servoMotor.write(180);  // Zuun tish harah
   delay(500);
   int zai = zaiMedrugch.ping_cm();
   delay(100);
-  servoMotor.write(65);  // Butsaad gol bairshild
+  servoMotor.write(90);  // Butsaad gol bairshild
   return zai;
 }
 
